@@ -1,0 +1,15 @@
+/target
+
+# Environment files with secrets
+.env
+*.env.local
+
+# State files (regenerated at runtime)
+trade_state.json
+portfolio_status.txt
+run_output.txt
+
+# IDE
+.idea/
+.vscode/
+*.swp

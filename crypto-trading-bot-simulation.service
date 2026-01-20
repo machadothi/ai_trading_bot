@@ -1,0 +1,30 @@
+[Unit]
+Description=Crypto Trading Bot (Simulation Mode)
+Documentation=https://github.com/machado/crypto_trading_bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=machado
+Group=machado
+WorkingDirectory=%h/git/crypto_trading_bot
+EnvironmentFile=%h/git/crypto_trading_bot/.env.simulation
+ExecStart=%h/git/crypto_trading_bot/target/release/crypto_trading_bot
+Restart=on-failure
+RestartSec=10
+
+# Logging - stdout/stderr go to journald
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=crypto-trading-bot-sim
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+ReadWritePaths=%h/git/crypto_trading_bot
+
+[Install]
+WantedBy=multi-user.target

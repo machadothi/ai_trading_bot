@@ -1,0 +1,55 @@
+[package]
+name = "crypto_trading_bot"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# HTTP client for API calls
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+
+# JSON serialization/deserialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# WebSocket for real-time data
+tokio-tungstenite = { version = "0.24", features = ["rustls-tls-native-roots"] }
+futures-util = "0.3"
+
+# Decimal math for financial calculations (avoid floating point errors)
+rust_decimal = { version = "1", features = ["serde"] }
+rust_decimal_macros = "1"
+
+# Date and time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+# Environment variables and configuration
+dotenv = "0.15"
+config = "0.14"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Error handling
+thiserror = "2"
+anyhow = "1"
+
+# Cryptographic signing for API authentication
+hmac = "0.12"
+sha2 = "0.10"
+hex = "0.4"
+
+# Rate limiting
+governor = "0.7"
+
+# Database for storing trades/history (optional)
+sqlx = { version = "0.8", features = ["runtime-tokio", "sqlite", "chrono"] }
+
+# Technical analysis indicators
+ta = "0.5"
+
+# Random number generation (for simulation)
+rand = "0.8"
